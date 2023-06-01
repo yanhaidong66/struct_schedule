@@ -71,4 +71,27 @@ public class ClassDatabase {
         return false;
     }
 
+    public Action getClass(String name){
+        for(int i=0;i<amountOfClass;i++){
+            if(actions.get(i).getName().equals(name)==true){
+                return actions.get(i);
+            }
+        }
+        return null;
+    }
+
+    public boolean changeClass(String name,int start_time,int end_time,int duration,int day_in_week){
+        for(int i=0;i<amountOfClass;i++){
+            if(actions.get(i).getName().equals(name)==true){
+                Action a=actions.get(i);
+                a.setDayOfWeek(day_in_week);
+                a.setStartTime(start_time);
+                a.setEndTime(end_time);
+                a.setDuration(duration);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
