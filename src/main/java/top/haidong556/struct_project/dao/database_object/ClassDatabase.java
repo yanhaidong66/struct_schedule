@@ -94,4 +94,17 @@ public class ClassDatabase {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "ClassDatabase{" +
+                "actions=" + actions +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        ClassDatabase database=new ClassDatabase();
+        database.read_from_file();
+        System.out.println(database);
+    }
+
 }
