@@ -1,5 +1,6 @@
 package top.haidong556.struct_project.pojo.people_object;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import top.haidong556.struct_project.dao.my_database.ClassTableDatabase;
@@ -78,4 +79,15 @@ public class People {
     public int hashCode() {
         return Objects.hash(name, password);
     }
+    public static <T> T toPeople(String json, Class<T> cls) {
+        Gson gson = new Gson();
+        if (Objects.isNull(json)) return null;
+        T obj = gson.fromJson(json, cls);
+        if (Objects.isNull(obj)) {
+            return null;
+        } else {
+            return obj;
+        }
+    }
+
 }

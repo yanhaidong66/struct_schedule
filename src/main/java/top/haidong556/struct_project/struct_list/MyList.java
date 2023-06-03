@@ -41,6 +41,8 @@ public class MyList<E> implements List<E> {
     @Override
     public boolean contains(Object o) {
         for(int i=0;i<size;i++){
+            if (array[i]==null)
+                return false;
             if(array[i].equals(o))
                 return true;
         }
@@ -83,6 +85,8 @@ public class MyList<E> implements List<E> {
         if(checkBounds()==true){
             ensureCapacity();
         }
+        if(contains(e))
+            return false;
         array[size]=e;
         size++;
         return true;

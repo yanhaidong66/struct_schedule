@@ -18,7 +18,7 @@ public class StudentDatabase {
     private static StudentDatabase instance;
     static {
         instance=new StudentDatabase();
-        //readFromFile();
+        readFromFile();
     }
 
     private StudentDatabase(){}
@@ -29,15 +29,25 @@ public class StudentDatabase {
 
     public static boolean readFromFile(){
         File file=new File(FILE_PATH);
-        FileReader fileReader;
+        String s=new String();
+        BufferedReader bufferedReader;
         try {
-            fileReader=new FileReader(file);
+            FileInputStream fileInputStream=new FileInputStream(file);
+            InputStreamReader inputStreamReader =new InputStreamReader(fileInputStream);
+            bufferedReader=new BufferedReader(inputStreamReader);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
+            try {
+                while ((s=bufferedReader.readLine())!=null) {
+                    students.add(People.toPeople(s,People.class));
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return true;
 
-        return true;
 
     }
 
@@ -53,8 +63,8 @@ public class StudentDatabase {
         FileWriter fileWriter;
         try {
             fileWriter=new FileWriter(file);
-            for(People s:students){
-                fileWriter.write(s.toString()+"\n");
+            for(int i=0;i<amountOfStudent;i++){
+                fileWriter.write(students.get(i).toString()+"\n");
             }
             fileWriter.flush();
             fileWriter.close();
@@ -72,17 +82,30 @@ public class StudentDatabase {
             return false;
         }
         students.add(p);
+        amountOfStudent++;
         return true;
 
     }
-
-
-
-    public static void main(String[] args) {
-        StudentDatabase studentDatabase=StudentDatabase.getInstance();
-        studentDatabase.addStudent(new Student("hiadong","2332"));
-        studentDatabase.addStudent(new Student("hiadong","23332"));
-        studentDatabase.writeToFile();
-
+    public String toString(){
+        String s=new String();
+        for(People p:students){
+            if(p==null)
+                return s;
+            s+= p.toString()+"\n";
+        }
+        return s;
     }
+
+
+
+//    public static void main(String[] args) {
+//        StudentDatabase studentDatabase=StudentDatabase.getInstance();
+//        studentDatabase.addStudent(new Student("hiadong","2332"));
+//        studentDatabase.addStudent(new Student("hiadong","23332"));
+//
+//        System.out.println(studentDatabase);
+//
+//        studentDatabase.writeToFile();
+//
+//    }
 }
