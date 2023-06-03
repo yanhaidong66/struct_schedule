@@ -87,14 +87,14 @@ public class Action {
 
     @Override
     public String toString() {
-        return "Action{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", duration=" + duration +
-                ", dayOfWeek=" + dayOfWeek +
-                '}';
+        if (this==null) return "";
+        try {
+            Gson gson = new Gson();
+            return gson.toJson(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public void setDayOfWeek(int dayOfWeek) {
@@ -123,4 +123,15 @@ public class Action {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        Action action = (Action) o;
+        return startTime == action.startTime && endTime == action.endTime && duration == action.duration && dayOfWeek == action.dayOfWeek && Objects.equals(name, action.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, startTime, endTime, duration, dayOfWeek);
+    }
 }

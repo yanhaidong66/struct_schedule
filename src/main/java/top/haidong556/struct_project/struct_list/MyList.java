@@ -196,9 +196,6 @@ public class MyList<E> implements List<E> {
         return null;
     }
 
-    public String toString(){
-        return Arrays.toString(array);
-    }
 
     public static void main(String[] args) {
         MyList<Integer> l=new MyList<>();
@@ -211,4 +208,15 @@ public class MyList<E> implements List<E> {
         l.remove((Integer) 3);
         System.out.println(l.toString());
     }
+    @Override
+    public String toString(){
+        String s=new String();
+        for(E e:array){
+            if(e==null)
+                return s;
+            s+=e.toString()+"\n";
+        }
+        return s;
+    }
+
 }
