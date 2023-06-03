@@ -114,13 +114,13 @@ public class CourseDatabase {
     public String toString(){
         return courses.toString();
     }
-    public static void main(String[] args) {
-        CourseDatabase courseDatabase=CourseDatabase.getInstance();
-        courseDatabase.addCourse(new Course("yuwen", 8, 9, 1, 1));
-        courseDatabase.addCourse(new Course("yuwen", 8, 9, 1, 1));
-        courseDatabase.addCourse(new Course("yuwe6n", 8, 9, 1, 1));
-        CourseDatabase.writeIntoFile();
-    }
+//    public static void main(String[] args) {
+//        CourseDatabase courseDatabase=CourseDatabase.getInstance();
+//        courseDatabase.addCourse(new Course("yuwen", 8, 9, 1, 1));
+//        courseDatabase.addCourse(new Course("yuwen", 8, 9, 1, 1));
+//        courseDatabase.addCourse(new Course("yuwe6n", 8, 9, 1, 1));
+//        CourseDatabase.writeIntoFile();
+//    }
 
 
 }

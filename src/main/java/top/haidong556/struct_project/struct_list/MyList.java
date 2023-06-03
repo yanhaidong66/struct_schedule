@@ -63,8 +63,8 @@ public class MyList<E> implements List<E> {
 
         @Override
         public E next() {
-
-            return (E) array[currentIndex];
+            currentIndex++;
+            return (E) array[currentIndex-1];
         }
     }
     @Override

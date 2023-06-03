@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import top.haidong556.struct_project.dao.my_database.ClassTableDatabase;
 import top.haidong556.struct_project.pojo.action_object.ClassTable;
+
+import java.util.Objects;
+
 @Component
 public class People {
     private static int countOfPeople=0;
@@ -56,11 +59,23 @@ public class People {
 
     @Override
     public String toString() {
-        return "People{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\n' +
-                "classTable=" + classTable +
-                '}';
+        return "{" +
+                "\"id\""+ ":"+ id +
+                ", \"name\"" + ":\""+ name + '\"' +
+                ", \"password\"" + ":\""+ password  +
+                "\"}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        People people = (People) o;
+        return Objects.equals(name, people.name) && Objects.equals(password, people.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, password);
     }
 }
