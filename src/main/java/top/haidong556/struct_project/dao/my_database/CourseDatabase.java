@@ -11,7 +11,7 @@ import java.io.*;
 /**
  * 单例模式
  */
-@Repository
+
 public class CourseDatabase {
     private static final String FILE_PATH="src/main/resources/database/course_database/course.txt";
     private static MyList<Action> courses;

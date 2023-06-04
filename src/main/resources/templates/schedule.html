@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,146 +8,146 @@
     <link rel="stylesheet" href="/static/schedule.css">
 </head>
 <body>
-    <div class="student_message">
-        
-        <div class="student_photo">
-        
-        </div> 
-        
-        <div class="student_message_text">
+<div class="student_message">
+
+    <div class="student_photo">
+
+    </div>
+
+    <div class="student_message_text">
         <p class="student_text">姓名：</p>
-        <p class="student_text">haidong</p>
+        <p class="student_text" th:text="${student.getName()}">空</p>
         <p></p>
-        </div>
-    
     </div>
-    <div class="action">
-        <div class="time">
-            <p>时间：</p>
-        </div>
-        <div class="next_action">
-            <p>下一场活动</p>
-        </div>
+
+</div>
+<div class="action">
+    <div class="time">
+        <p>时间：</p>
     </div>
-    <div class="schedule">
-        <table>
-            <tr>
-              <th></th>
-              <th>周一</th>
-              <th>周二</th>
-              <th>周三</th>
-              <th>周四</th>
-              <th>周五</th>
-              <th>周六</th>
-              <th>周日</th>
-            </tr>
-            <tr>
-              <td>8:00 - 9:00</td>
-              <td>英语</td>
-              <td>数学</td>
-              <td></td>
-              <td>物理</td>
-              <td></td>
-              <td></td>
-                <td></td>
-            </tr>
-            <tr>
-              <td>9:00 - 10:00</td>
-              <td>历史</td>
-              <td>化学</td>
-              <td>地理</td>
-              <td></td>
-              <td>体育</td>
-              <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td>历史</td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-            <tr>
-              <td>11:00 - 12:00</td>
-              <td>历史</td>
-              <td>化学</td>
-              <td>地理</td>
-              <td></td>
-              <td>体育</td>
-              <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td>历史</td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>13:00 - 14:00</td>
-                <td>历史</td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>15:00 - 16:00</td>
-                <td>历史</td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>16:00 - 17:00</td>
-                <td></td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>17:00 - 18:00</td>
-                <td>历史</td>
-                <td>化学</td>
-                <td>地理</td>
-                <td></td>
-                <td>体育</td>
-                <td></td>
-                <td></td>
-              </tr>
-              
-          </table>
+    <div class="next_action">
+        <p>下一场活动</p>
     </div>
-    <div class="button">
-        <form action="/submit" method="POST" class="form">
-            <label for="name">活动名称：</label>
-            <input type="text" id="name" name="name" required><br>
-        
-            <label for="start_time">开始时间：</label>
-            <input type="text" id="start_time" name="start_time" required><br>
-        
-            <label for="end_time">结束时间：</label>
-            <input id="end_time" name="end_time"  required></textarea><br>
-        
-            <input type="submit" value="提交" class="button_add_action">
-          </form>
-    </div>
-   
+</div>
+<div class="schedule">
+    <table>
+        <tr>
+            <th></th>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+            <th>周六</th>
+            <th>周日</th>
+        </tr>
+        <tr>
+            <td>8:00 - 9:00</td>
+            <td th:text="${day1[0].getName()}"></td>
+            <td th:text="${day2[0].getName()}"></td>
+            <td th:text="${day3[0].getName()}"></td>
+            <td th:text="${day4[0].getName()}"></td>
+            <td th:text="${day5[0].getName()}"></td>
+            <td th:text="${day6[0].getName()}"></td>
+            <td th:text="${day7[0].getName()}"></td>
+        </tr>
+        <tr>
+            <td>9:00 - 10:00</td>
+            <td th:text="${day1[1].getName()}"></td>
+            <td th:text="${day2[1].getName()}"></td>
+            <td th:text="${day3[1].getName()}"></td>
+            <td th:text="${day4[1].getName()}"></td>
+            <td th:text="${day5[1].getName()}"></td>
+            <td th:text="${day6[1].getName()}"></td>
+            <td th:text="${day7[1].getName()}"></td>
+        </tr>
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td th:text="${day1[2].getName()}"></td>
+            <td th:text="${day2[2].getName()}"></td>
+            <td th:text="${day3[2].getName()}"></td>
+            <td th:text="${day4[2].getName()}"></td>
+            <td th:text="${day5[2].getName()}"></td>
+            <td th:text="${day6[2].getName()}"></td>
+            <td th:text="${day7[2].getName()}"></td>
+        </tr>
+        <tr>
+            <td>11:00 - 12:00</td>
+            <td th:text="${day1[3].getName()}"></td>
+            <td th:text="${day2[3].getName()}"></td>
+            <td th:text="${day3[3].getName()}"></td>
+            <td th:text="${day4[3].getName()}"></td>
+            <td th:text="${day5[3].getName()}"></td>
+            <td th:text="${day6[3].getName()}"></td>
+            <td th:text="${day7[3].getName()}"></td>
+        </tr>
+        <tr>
+            <td>12:00 - 13:00</td>
+            <td th:text="${day1[4].getName()}"></td>
+            <td th:text="${day2[4].getName()}"></td>
+            <td th:text="${day3[4].getName()}"></td>
+            <td th:text="${day4[4].getName()}"></td>
+            <td th:text="${day5[4].getName()}"></td>
+            <td th:text="${day6[4].getName()}"></td>
+            <td th:text="${day7[4].getName()}"></td>
+        </tr>
+        <tr>
+            <td>13:00 - 14:00</td>
+            <td th:text="${day1[5].getName()}"></td>
+            <td th:text="${day2[5].getName()}"></td>
+            <td th:text="${day3[5].getName()}"></td>
+            <td th:text="${day4[5].getName()}"></td>
+            <td th:text="${day5[5].getName()}"></td>
+            <td th:text="${day6[5].getName()}"></td>
+            <td th:text="${day7[5].getName()}"></td>
+        </tr>
+        <tr>
+            <td>15:00 - 16:00</td>
+            <td th:text="${day1[6].getName()}"></td>
+            <td th:text="${day2[6].getName()}"></td>
+            <td th:text="${day3[6].getName()}"></td>
+            <td th:text="${day4[6].getName()}"></td>
+            <td th:text="${day5[6].getName()}"></td>
+            <td th:text="${day6[6].getName()}"></td>
+            <td th:text="${day7[6].getName()}"></td>
+        </tr>
+        <tr>
+            <td>16:00 - 17:00</td>
+            <td th:text="${day1[7].getName()}"></td>
+            <td th:text="${day2[7].getName()}"></td>
+            <td th:text="${day3[7].getName()}"></td>
+            <td th:text="${day4[7].getName()}"></td>
+            <td th:text="${day5[7].getName()}"></td>
+            <td th:text="${day6[7].getName()}"></td>
+            <td th:text="${day7[7].getName()}"></td>
+        </tr>
+        <tr>
+            <td>17:00 - 18:00</td>
+            <td th:text="${day1[8].getName()}"></td>
+            <td th:text="${day2[8].getName()}"></td>
+            <td th:text="${day3[8].getName()}"></td>
+            <td th:text="${day4[8].getName()}"></td>
+            <td th:text="${day5[8].getName()}"></td>
+            <td th:text="${day6[8].getName()}"></td>
+            <td th:text="${day7[8].getName()}"></td>
+        </tr>
+
+    </table>
+</div>
+<div class="button">
+    <form action="/submit" method="POST" class="form">
+        <label for="name">活动名称：</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="start_time">开始时间：</label>
+        <input type="text" id="start_time" name="start_time" required><br>
+
+        <label for="end_time">结束时间：</label>
+        <input id="end_time" name="end_time" required></textarea><br>
+
+        <input type="submit" value="提交" class="button_add_action">
+    </form>
+</div>
+
 </body>
 </html>

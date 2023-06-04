@@ -2,6 +2,7 @@ package top.haidong556.struct_project.pojo.people_object;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import top.haidong556.struct_project.dao.my_database.ClassTableDatabase;
 import top.haidong556.struct_project.pojo.action_object.ClassTable;
@@ -18,8 +19,8 @@ public class People {
     /**
      * id从0开始自增，会自己创建一个课程表
      */
-    @Autowired(required = false)
-    public People( String name, String password) {
+
+    public People(@Value("${people.name}") String name,@Value("${people.password}") String password) {
         this.id = countOfPeople++;
         this.name = name;
         this.password = password;

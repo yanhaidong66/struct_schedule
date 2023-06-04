@@ -1,21 +1,23 @@
 package top.haidong556.struct_project.pojo.action_object;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import top.haidong556.struct_project.pojo.action_object.Action;
 
 import java.util.Arrays;
 
-@Repository
+@Component
 public class ClassTable {
     private int id;
     private Action[][] actions=new Action[7][10];
 
 
 
-    @Autowired(required = false)
-    public ClassTable(int studentId){
+
+    public ClassTable(@Value("0") int studentId){
         id=studentId;
         Action.setCountOfAction(0);
         for(int i=1;i<=7;i++){

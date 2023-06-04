@@ -10,7 +10,6 @@ import java.io.*;
 /**
  * 单例模式
  */
-@Repository
 public class ClassTableDatabase {
 
     private static final String FILE_PATH="src/main/resources/database/class_table_database/";

@@ -7,7 +7,7 @@ import top.haidong556.struct_project.struct_list.MyList;
 
 import java.io.*;
 
-@Repository
+
 public class StudentDatabase {
     public static final String FILE_PATH="src/main/resources/database/student_database/student.txt";
 
@@ -41,7 +41,13 @@ public class StudentDatabase {
 
             try {
                 while ((s=bufferedReader.readLine())!=null) {
-                    students.add(People.toPeople(s,People.class));
+                    People student=People.toPeople(s,People.class);
+                    if(student.getClassTable()==null){
+                        student.setClassTable(ClassTableDatabase.getClassTable(student.getId()));
+                    }
+
+                    students.add(student);
+                    amountOfStudent++;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -94,6 +100,21 @@ public class StudentDatabase {
             s+= p.toString()+"\n";
         }
         return s;
+    }
+    /**
+     * 没有找到返回-1，找到返回id
+     */
+    public int searchStudent(String user,String pass){
+        People p=new People(user,pass);
+        for(int i=0;i<amountOfStudent;i++){
+            if(students.get(i).equals(p)==true)
+                return students.get(i).getId();
+        }
+        return -1;
+    }
+
+    public People getStudent(int studentId){
+        return students.get(studentId);
     }
 
 
